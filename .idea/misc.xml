@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/ConfigServer/ConfigServer/pom.xml" />
         <option value="$PROJECT_DIR$/SchoolService/pom.xml" />
         <option value="$PROJECT_DIR$/Authentification/pom.xml" />
+        <option value="$PROJECT_DIR$/SmtpServer/pom.xml" />
       </list>
     </option>
   </component>
