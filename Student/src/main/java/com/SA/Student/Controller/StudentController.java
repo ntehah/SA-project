@@ -1,19 +1,16 @@
 package com.SA.Student.Controller;
 
-import com.SA.Student.DTO.Avatar;
 import com.SA.Student.DTO.ElementOperationDTO;
 import com.SA.Student.DTO.SendEmailDTO;
 import com.SA.Student.DTO.StudentDTO;
 import com.SA.Student.Entity.Student;
 import com.SA.Student.Service.KafkaProducer;
 import com.SA.Student.Service.StudentService;
-import com.SA.Student.client.ElementClient;
+import com.SA.Student.client.ElementFeignClient;
 import com.SA.Student.exeption.NotFoundException;
 import com.google.gson.Gson;
-import jakarta.servlet.http.HttpServletRequest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +25,7 @@ public class StudentController {
     @Autowired
     private ModelMapper modelMapper;
     @Autowired
-    private ElementClient elementClient;
+    private ElementFeignClient elementClient;
     @GetMapping()
     public List<Student> getAll(){
         return studentService.getAll();
@@ -39,7 +36,7 @@ public class StudentController {
     }
 
     @GetMapping("/school/{school_id}")
-    public List<Student> getBySchoolId(@PathVariable String school_id, HttpServletRequest request) throws NotFoundException {
+    public List<Student> getBySchoolId(@PathVariable String school_id) throws NotFoundException {
         return studentService.findBySchoolId(school_id);
     }
 

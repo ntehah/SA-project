@@ -1,10 +1,13 @@
 package com.SA.Student.Service;
 
 import com.SA.Student.DAO.StudentDAO;
+import com.SA.Student.DTO.ElementOperationDTO;
 import com.SA.Student.Entity.Student;
+import com.SA.Student.client.ElementFeignClient;
 import com.SA.Student.exeption.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -12,6 +15,11 @@ import java.util.List;
 public class StudentService {
     @Autowired
     private StudentDAO studentDAO;
+    private ElementFeignClient elementFeignClient;
+    @Autowired
+    public StudentService(ElementFeignClient elementFeignClient){
+        this.elementFeignClient = elementFeignClient;
+    }
 
     public List<Student> getAll(){
         return studentDAO.findAll();
@@ -36,5 +44,10 @@ public class StudentService {
 
     public void delete(String id) {
         studentDAO.deleteById(id);
+    }
+
+    //Element Feign Beginning
+    public String buyElementByStudent(ElementOperationDTO elementOperationDTO){
+        return elementFeignClient.buyElementByStudent(elementOperationDTO);
     }
 }

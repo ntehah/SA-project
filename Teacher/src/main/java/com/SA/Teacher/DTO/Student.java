@@ -1,4 +1,4 @@
-package com.SA.Student.Entity;
+package com.SA.Teacher.DTO;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

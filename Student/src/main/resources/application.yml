@@ -6,6 +6,8 @@ spring:
       port: 27017
   application:
     name: Student
+  main:
+    allow-bean-definition-overriding: true
 
 spring.cloud.config.enabled: false
 

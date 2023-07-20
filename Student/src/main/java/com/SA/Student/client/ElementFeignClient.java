@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @FeignClient("Avatar")
-public interface ElementClient {
+public interface ElementFeignClient {
         @RequestMapping("/element/buy-element")
         public String buyElementByStudent(@RequestBody ElementOperationDTO elementOperationDTO);
 }
