@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient("student-service")
+@FeignClient(name = "Student",url = "http://localhost:8090")
 public interface StudentClient {
     @GetMapping("/students/{id}")
     public StudentDTO getStudent(@PathVariable String id);
