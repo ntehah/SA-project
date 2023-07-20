@@ -5,8 +5,7 @@ import cs544.auth.exception.CustomException;
 import cs544.auth.model.AppUser;
 import cs544.auth.repository.UserRepository;
 import cs544.auth.security.JwtTokenProvider;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.ws.rs.NotFoundException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.NotFoundException;
 
 
 @Service
@@ -52,5 +54,9 @@ public class UserService {
 
   public AppUser userById(Integer id) throws NotFoundException {
     return userRepository.findById(id).orElseThrow(() -> new NotFoundException("user not found"));
+  }
+
+  public boolean existByUsername(String username) throws NotFoundException {
+    return userRepository.existsByUsername(username);
   }
 }

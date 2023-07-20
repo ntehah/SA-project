@@ -5,8 +5,6 @@ import cs544.auth.dto.UserDataDTO;
 import cs544.auth.dto.UserResponseDTO;
 import cs544.auth.model.AppUser;
 import cs544.auth.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +21,9 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.NotFoundException;
 
 @RestController
 @RequestMapping("/users")

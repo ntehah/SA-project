@@ -21,7 +21,6 @@ import java.util.List;
 @EnableDiscoveryClient
 public class AuthenticationApplication implements CommandLineRunner {
 
-
     final UserService userService;
 
     public static void main(String[] args) {
@@ -32,30 +31,38 @@ public class AuthenticationApplication implements CommandLineRunner {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
     @Override
     public void run(String... params) {
-        AppUser admin = new AppUser();
-        admin.setUsername("admin");
-        admin.setPassword("admin");
-        admin.setEmail("admin@email.com");
-        admin.setAppUserRoles(new ArrayList<>(List.of(AppUserRole.ADMIN)));
+        if (!userService.existByUsername("admin")) {
+            AppUser admin = new AppUser();
+            admin.setUsername("admin");
+            admin.setPassword("admin");
+            admin.setEmail("admin@email.com");
+            admin.setAppUserRoles(new ArrayList<>(List.of(AppUserRole.ADMIN)));
 
-        userService.signUp(admin);
+            userService.signUp(admin);
+        }
 
-        AppUser student = new AppUser();
-        student.setUsername("teacher");
-        student.setPassword("teacher");
-        student.setEmail("teacher@email.com");
-        student.setAppUserRoles(new ArrayList<>(List.of(AppUserRole.STUDENT)));
+        if (!userService.existByUsername("student")){
+            AppUser student = new AppUser();
+            student.setUsername("student");
+            student.setPassword("student");
+            student.setEmail("student@email.com");
+            student.setAppUserRoles(new ArrayList<>(List.of(AppUserRole.STUDENT)));
 
-        userService.signUp(student);
+            userService.signUp(student);
+        }
 
-        AppUser teacher = new AppUser();
-        teacher.setUsername("teacher");
-        teacher.setPassword("teacher");
-        teacher.setEmail("teacher@email.com");
-        teacher.setAppUserRoles(new ArrayList<>(List.of(AppUserRole.STUDENT)));
+        if (!userService.existByUsername("teacher")) {
+            AppUser teacher = new AppUser();
+            teacher.setUsername("teacher");
+            teacher.setPassword("teacher");
+            teacher.setEmail("teacher@email.com");
+            teacher.setAppUserRoles(new ArrayList<>(List.of(AppUserRole.TEACHER)));
 
-        userService.signUp(teacher);
+            userService.signUp(teacher);
+        }
+
     }
 }

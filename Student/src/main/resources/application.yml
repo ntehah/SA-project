@@ -1,4 +1,6 @@
 spring:
+  config:
+    url: "optional:configserver:http://localhost:8080"
   data:
     mongodb:
       host: localhost
@@ -14,9 +16,9 @@ spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.Stri
 spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 server:
-  port: 8090
+  port: 9002
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8000/eureka/

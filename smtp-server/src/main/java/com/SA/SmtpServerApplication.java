@@ -17,7 +17,7 @@ public class SmtpServerApplication {
 	}
 	@EventListener(ApplicationReadyEvent.class)
 	public void triggerMail() throws MessagingException {
-		senderService.sendSimpleEmail("school.sa.2023@gmail.com",
+		senderService.sendSimpleEmail("swa6360@gmail.com",
 				"This is email body",
 				"This is email subject");
 
