@@ -1,0 +1,25 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/school
+  zipkin:
+    base-url: http://localhost:9411/zipkin/
+  application:
+    name: School
+  config:
+    import: "optional:configserver:http://localhost:8888"
+  sleuth:
+    sampler:
+      percentage: 1.0
+    web:
+      skipPattern: "(^cleanup.*)"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 9000
+
+

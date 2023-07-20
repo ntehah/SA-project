@@ -1,0 +1,33 @@
+eureka:
+  client:
+    register-with-eureka: false
+server:
+  port: 8222
+
+spring:
+  application:
+    name: gateway
+  config:
+    import: "optional:configserver:http://localhost:8888"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: school
+          uri: http://localhost:9000
+          predicates:
+            - Path=/school/**
+        - id: student
+          uri: http://localhost:8090
+          predicates:
+            - Path=/students/**
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
