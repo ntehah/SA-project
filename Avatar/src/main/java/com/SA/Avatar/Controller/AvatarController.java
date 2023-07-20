@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/avatar")
 public class AvatarController {
     @Autowired
-   private  AvatarService avatarService;
+    private  AvatarService avatarService;
 
 
     @GetMapping

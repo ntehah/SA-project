@@ -1,0 +1,26 @@
+server:
+  port: 9005
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: Authentication
+      port: 27017
+  application:
+    name: Authentication
+
+
+logging:
+  level:
+    root: WARN
+
+security:
+  jwt:
+    token:
+      secret-key: HereWeGoAgainMIU
+      expire-length: 1500000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

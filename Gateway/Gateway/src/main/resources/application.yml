@@ -2,13 +2,13 @@ eureka:
   client:
     register-with-eureka: false
 server:
-  port: 8222
+  port: 8888
 
 spring:
   application:
     name: gateway
   config:
-    import: "optional:configserver:http://localhost:8888"
+    import: "optional:configserver:http://localhost:8080"
   cloud:
     gateway:
       discovery:
@@ -19,10 +19,20 @@ spring:
           uri: http://localhost:9000
           predicates:
             - Path=/school/**
+        - id: avatar
+          uri: http://localhost:9001
+          predicates:
+            - Path=/avatar/**
+            - Path=/element/**
+            - Path=/reward/**
         - id: student
-          uri: http://localhost:8090
+          uri: http://localhost:9002
           predicates:
             - Path=/students/**
+        - id: teacher
+          uri: http://localhost:9003
+          predicates:
+            - Path=/teachers/**
 
 management:
   tracing:
